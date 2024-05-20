@@ -1,0 +1,178 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_class %}
+    <body class="color-theme-blue mont-font">
+{% endblock %}
+
+{% block content %}
+    <div class="preloader"></div>
+
+    <div class="main-wrapper">
+
+        {% include 'nav-top.html' %}
+        {% include 'nav-left.html' %}
+
+        <!-- main content -->
+        <div class="main-content right-chat-active">
+
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left">
+                    <!-- loader wrapper -->
+                    <div class="preloader-wrap p-3">
+                        <div class="box shimmer">
+                            <div class="lines">
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="box shimmer mb-3">
+                            <div class="lines">
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="box shimmer">
+                            <div class="lines">
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- loader wrapper -->
+                    <div class="row feed-body">
+                        <div class="col-xl-8 col-xxl-9 col-lg-8">
+
+
+                            <div class="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-4 mb-3">
+                                <div class="card-body d-flex align-items-center justify-content-center pt-0 ps-4 pe-4 pb-2">
+                                    <a class="font-xsss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"><i
+                                            class="btn-round-sm font-xs text-primary feather-edit-3 me-2 bg-greylight"></i>Something
+                                        on your mind?</a>
+                                    <a href="{% url 'create-post' %}"
+                                       class="pb-3 pt-3 lh-20 w100 card-body bg-primary me-2 text-white text-center font-xssss fw-600 ls-1 rounded-xl text-nowrap">Create
+                                        Post</a>
+                                </div>
+                            </div>
+
+                            {% for post in all_posts %}
+
+                                <div class="card w-100 shadow-xss rounded-xxl border-0 p-4 mb-3">
+                                    <div class="card-body p-0 d-flex">
+                                        <figure class="avatar me-3">
+                                            {% if all_post_profiles|image_from_dict:post.id %}
+                                                <img src="{{ all_post_profiles|image_url_from_dict:post.id }}"
+                                                                         alt="image"
+                                                                         class="shadow-sm rounded-circle w45 h45">
+                                            {% else %}
+                                                <img src="{% static 'svg/default_profile_image.svg' %}"
+                                                                         alt="image"
+                                                                         class="shadow-sm rounded-circle w45 h45">
+                                            {% endif %}
+                                        </figure>
+                                        <h4 class="fw-700 text-grey-900 font-xssss mt-1">{{ post.user.first_name|capfirst }} {{ post.user.last_name|capfirst }}
+                                            <span class="d-block font-xssss fw-500 mt-1 lh-3 text-grey-500">{{ post.created_date }}</span>
+                                        </h4>
+                                    </div>
+                                    <div class="card-body p-0 me-lg-5">
+                                        <p class="fw-500 text-grey-500 lh-26 font-xssss w-100 mb-2">
+                                            {{ post.text }}
+{#                                            <a href="#" class="fw-600 text-primary ms-2">See more</a>#}
+                                        </p>
+                                    </div>
+                                    {% if post.image %}
+                                        <div class="card-body d-block p-0 mb-3">
+                                            <div class="row ps-2 pe-2">
+                                                <div class="col-sm-12 p-1"><a href="{{ post.image.url}}"
+                                                                              data-lightbox="roadtrip"><img
+                                                        src="{{ post.image.url }}"
+                                                        class="rounded-3 w-100" alt="image"></a></div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    <div class="card-body d-flex p-0">
+                                        <a
+                                           class="emoji-bttn d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss me-2"><i
+                                                class="feather-thumbs-up text-white bg-primary-gradiant me-1 btn-round-xs font-xss"></i>
+                                            <i class="feather-heart text-white bg-red-gradiant me-2 btn-round-xs font-xss"></i>2.8K
+                                            Likes</a>
+                                        <a
+                                           class="d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
+                                                class="feather-message-circle text-dark text-grey-900 btn-round-sm font-lg"></i><span
+                                                class="d-none-xss">22 Comments</span></a>
+                                        <a
+                                           class="ms-auto d-flex align-items-center fw-600 text-grey-900 text-dark lh-26 font-xssss"><i
+                                                class="feather-share-2 text-grey-900 text-dark btn-round-sm font-lg"></i><span
+                                                class="d-none-xs">Share</span></a>
+                                    </div>
+                                </div>
+
+                            {% endfor %}
+
+                        </div>
+                        <div class="col-xl-4 col-xxl-3 col-lg-4 ps-md-0">
+
+
+                            <div class="card w-100 shadow-xss rounded-xxl border-0 mb-3">
+                                <div class="card-body d-flex align-items-center  p-4">
+                                    <h4 class="fw-700 mb-0 font-xssss text-grey-900">Events</h4>
+                                </div>
+                                <div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
+                                    <div class="bg-success me-2 p-3 rounded-xxl"><h4
+                                            class="fw-700 font-lg ls-3 lh-1 text-white mb-0"><span
+                                            class="ls-1 d-block font-xsss text-white fw-600">FEB</span>22</h4></div>
+                                    <h4 class="fw-700 text-grey-900 font-xssss mt-2">Meeting with clients <span
+                                            class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500">41 Madison Ave, Floor 24, NY 10010</span>
+                                    </h4>
+                                </div>
+
+                                <div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
+                                    <div class="bg-warning me-2 p-3 rounded-xxl"><h4
+                                            class="fw-700 font-lg ls-3 lh-1 text-white mb-0"><span
+                                            class="ls-1 d-block font-xsss text-white fw-600">APR</span>30</h4></div>
+                                    <h4 class="fw-700 text-grey-900 font-xssss mt-2">Developer Meetup <span
+                                            class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500">49 Madison Ave, Floor 24, NY 10010</span>
+                                    </h4>
+                                </div>
+
+                                <div class="card-body d-flex pt-0 ps-4 pe-4 pb-3 overflow-hidden">
+                                    <div class="bg-primary me-2 p-3 rounded-xxl"><h4
+                                            class="fw-700 font-lg ls-3 lh-1 text-white mb-0"><span
+                                            class="ls-1 d-block font-xsss text-white fw-600">APR</span>23</h4></div>
+                                    <h4 class="fw-700 text-grey-900 font-xssss mt-2">Anniversary Event <span
+                                            class="d-block font-xsssss fw-500 mt-1 lh-4 text-grey-500">42 Madison Ave, Floor 24, NY 10010</span>
+                                    </h4>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- main content -->
+
+        {% include 'right-chat.html' %}
+
+        {% include 'footer.html' %}
+
+        {% include 'header-search.html' %}
+
+    </div>
+
+    {% include 'modal_popup_chat.html' %}
+
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+{% endblock %}

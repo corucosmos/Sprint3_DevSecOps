@@ -1,0 +1,131 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_class %}
+    <body class="color-theme-blue mont-font">
+{% endblock %}
+
+{% block content %}
+
+    <div class="preloader"></div>
+
+    <div class="main-wrapper">
+
+        {% include 'nav-top.html' %}
+        {% include 'nav-left.html' %}
+
+        <!-- main content -->
+        <div class="main-content right-chat-active">
+
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left">
+                    <div class="row">
+                        <div class="col-xl-12">
+
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 pe-2 ps-2">
+                                    <div class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden ">
+                                        <div class="card-image w-100">
+                                            <img src="{% static 'jpg/e-1.jpg' %}" alt="event" class="w-100 rounded-3">
+                                        </div>
+                                        <div class="card-body d-flex ps-0 pe-0 pb-0">
+                                            <div class="bg-greylight me-3 p-3 border-light-md rounded-xxl theme-dark-bg"><h4 class="fw-700 font-lg ls-3 text-grey-900 mb-0"><span class="ls-3 d-block font-xsss text-grey-500 fw-500">FEB</span>22</h4></div>
+                                            <h2 class="fw-700 lh-3 font-xss">Right here Right Now -  Comedy
+                                                <span class="d-flex font-xssss fw-500 mt-2 lh-3 text-grey-500"> <i class="ti-location-pin me-1"></i> Manchester Lane, NY </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 pe-2 ps-2">
+                                    <div class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden ">
+                                        <div class="card-image w-100">
+                                            <img src="{% static 'jpg/e-2.jpg' %}" alt="event" class="w-100 rounded-3">
+                                        </div>
+                                        <div class="card-body d-flex ps-0 pe-0 pb-0">
+                                            <div class="bg-greylight me-3 p-3 border-light-md rounded-xxl theme-dark-bg"><h4 class="fw-700 font-lg ls-3 text-grey-900 mb-0"><span class="ls-3 d-block font-xsss text-grey-500 fw-500">FEB</span>22</h4></div>
+                                            <h2 class="fw-700 lh-3 font-xss">Beach side Party - Toga
+                                                <span class="d-flex font-xssss fw-500 mt-2 lh-3 text-grey-500"> <i class="ti-location-pin me-1"></i> Manchester Lane, NY </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 pe-2 ps-2">
+                                    <div class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden ">
+                                        <div class="card-image w-100">
+                                            <img src="{% static 'jpg/e-3.jpg' %}" alt="event" class="w-100 rounded-3">
+                                        </div>
+                                        <div class="card-body d-flex ps-0 pe-0 pb-0">
+                                            <div class="bg-greylight me-3 p-3 border-light-md rounded-xxl theme-dark-bg"><h4 class="fw-700 font-lg ls-3 text-grey-900 mb-0"><span class="ls-3 d-block font-xsss text-grey-500 fw-500">FEB</span>22</h4></div>
+                                            <h2 class="fw-700 lh-3 font-xss">Retelling of Guide to the Galaxy
+                                                <span class="d-flex font-xssss fw-500 mt-2 lh-3 text-grey-500"> <i class="ti-location-pin me-1"></i> Manchester Lane, NY </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 pe-2 ps-2">
+                                    <div class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden ">
+                                        <div class="card-image w-100">
+                                            <img src="{% static 'jpg/e-4.jpg' %}" alt="event" class="w-100 rounded-3">
+                                        </div>
+                                        <div class="card-body d-flex ps-0 pe-0 pb-0">
+                                            <div class="bg-greylight me-3 p-3 border-light-md rounded-xxl theme-dark-bg"><h4 class="fw-700 font-lg ls-3 text-grey-900 mb-0"><span class="ls-3 d-block font-xsss text-grey-500 fw-500">FEB</span>22</h4></div>
+                                            <h2 class="fw-700 lh-3 font-xss">Indevlour Conference - RSVP Early
+                                                <span class="d-flex font-xssss fw-500 mt-2 lh-3 text-grey-500"> <i class="ti-location-pin me-1"></i> Manchester Lane, NY </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 pe-2 ps-2">
+                                    <div class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden ">
+                                        <div class="card-image w-100">
+                                            <img src="{% static 'jpg/e-5.jpg' %}" alt="event" class="w-100 rounded-3">
+                                        </div>
+                                        <div class="card-body d-flex ps-0 pe-0 pb-0">
+                                            <div class="bg-greylight me-3 p-3 border-light-md rounded-xxl theme-dark-bg"><h4 class="fw-700 font-lg ls-3 text-grey-900 mb-0"><span class="ls-3 d-block font-xsss text-grey-500 fw-500">FEB</span>22</h4></div>
+                                            <h2 class="fw-700 lh-3 font-xss">Team Stand-up Meeting - 0800
+                                                <span class="d-flex font-xssss fw-500 mt-2 lh-3 text-grey-500"> <i class="ti-location-pin me-1"></i> Manchester Lane, NY </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-md-6 pe-2 ps-2">
+                                    <div class="card p-3 bg-white w-100 hover-card border-0 shadow-xss rounded-xxl border-0 mb-3 overflow-hidden ">
+                                        <div class="card-image w-100">
+                                            <img src="{% static 'jpg/e-6.jpg' %}" alt="event" class="w-100 rounded-3">
+                                        </div>
+                                        <div class="card-body d-flex ps-0 pe-0 pb-0">
+                                            <div class="bg-greylight me-3 p-3 border-light-md rounded-xxl theme-dark-bg"><h4 class="fw-700 font-lg ls-3 text-grey-900 mb-0"><span class="ls-3 d-block font-xsss text-grey-500 fw-500">FEB</span>22</h4></div>
+                                            <h2 class="fw-700 lh-3 font-xss">Project Alignment Speech 2023
+                                                <span class="d-flex font-xssss fw-500 mt-2 lh-3 text-grey-500"> <i class="ti-location-pin me-1"></i> Manchester Lane, NY </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- main content -->
+
+        {% include 'right-chat.html' %}
+
+        {% include 'footer.html' %}
+
+        {% include 'header-search.html' %}
+
+    </div>
+
+    {% include 'modal_popup_chat.html' %}
+
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,117 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_class %}
+    <body class="color-theme-blue mont-font">
+{% endblock %}
+
+{% block content %}
+
+    <div class="preloader"></div>
+
+    <div class="main-wrapper">
+
+        {% include 'nav-top.html' %}
+
+        {% include 'nav-left.html' %}
+
+        <!-- main content -->
+
+        <div class="main-content right-chat-active">
+
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left">
+                    <!-- loader wrapper -->
+                    <div class="preloader-wrap p-3">
+                        <div class="box shimmer">
+                            <div class="lines">
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="box shimmer mb-3">
+                            <div class="lines">
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                            </div>
+                        </div>
+                        <div class="box shimmer">
+                            <div class="lines">
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                                <div class="line s_shimmer"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- loader wrapper -->
+                    <form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="card w-100 shadow-xss rounded-xxl border-0 ps-4 pt-4 pe-4 pb-3 mb-3">
+                            <div class="card-body p-0">
+                                <a
+                                   class=" font-xssss fw-600 text-grey-500 card-body p-0 d-flex align-items-center"><i
+                                        class="btn-round-sm font-xs text-primary feather-edit-3 me-2 bg-greylight"></i>Create
+                                    Post</a>
+                            </div>
+                            <div class="card-body p-0 mt-3 position-relative">
+                                <figure class="avatar position-absolute ms-2 mt-1 top-5"><img
+                                        src="{% static 'svg/default_profile_image.svg' %}" alt="image"
+                                        class="shadow-sm rounded-circle w30"></figure>
+                                {% render_field form.text class="h100 bor-0 w-100 rounded-xxl p-2 ps-5 font-xssss text-grey-500 fw-500 border-light-md theme-dark-bg" cols="30" rows="10" %}
+                            </div>
+                            <div class="card-body d-flex p-0 mt-0">
+                                {% if form.errors %}
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <div class="text-danger">
+                                                {{ field.label }}: {{ error }}
+                                            </div>
+                                        {% endfor %}
+                                    {% endfor %}
+                                {% endif %}
+                            </div>
+                            <div class="card-body d-flex p-0 mt-0">
+                                <label for="{{ form.image.id_for_label }}" class="d-flex align-items-center font-xssss fw-600 ls-1 text-grey-700 text-dark pe-4 cursor-pointer"><i
+                                        class="font-md text-success feather-image me-2"></i><span id="add-image-span" class="d-none-xs me-3">Add Image</span>
+                                    {% render_field form.image style="display:none;" %}
+                                    <span id="file-selected"></span>
+                                </label>
+                                <button type="submit" class="pb-2 pt-2 ps-5 pe-5 lh-20 ms-auto bg-primary text-white text-center font-xssss fw-600 ls-1 rounded-xl text-nowrap border-0"><span class="d-none-xs">Post</span></button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- main content -->
+
+        {% include 'right-chat.html' %}
+
+        {% include 'footer.html' %}
+
+        {% include 'header-search.html' %}
+
+    </div>
+
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/lightbox.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script>
+        var upload_input = document.getElementById("{{ form.image.id_for_label }}");
+        upload_input.addEventListener('change', (e) => {
+            const fileName = e.target.files[0].name;
+            const file_selected_span = document.getElementById('file-selected');
+            const add_image_span = document.getElementById('add-image-span');
+            file_selected_span.textContent = fileName;
+            add_image_span.textContent = "Selected Image:"
+        })
+    </script>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_class %}
+    <body class="color-theme-blue mont-font">
+{% endblock %}
+
+{% block content %}
+
+    <div class="preloader"></div>
+
+
+    <div class="main-wrapper">
+
+        {% include 'nav-top.html' %}
+
+        {% include 'nav-left.html' %}
+
+        <!-- main content -->
+        <div class="main-content right-chat-active">
+
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left pe-0">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="card shadow-xss w-100 d-block d-flex border-0 p-4 mb-3">
+                                <div class="card-body d-flex align-items-center p-0">
+                                    <h2 class="fw-700 mb-0 mt-0 font-md text-grey-900">All User Profiles</h2>
+                                </div>
+                            </div>
+
+                            <div class="row ps-2 pe-1">
+                                {% for profile in user_profiles %}
+                                    <div class="col-md-4 col-sm-6 pe-2 ps-2">
+                                        <div class="card d-block border-0 shadow-xss rounded-3 overflow-hidden mb-3">
+                                            <div class="card-body d-block w-100 p-4 text-center">
+                                                <figure class="avatar ms-auto me-auto mb-0 position-relative w90 z-index-1">
+                                                    {% if profile.profile_image %}
+                                                        <img src="{{ profile.profile_image.url }}" alt="profile image" class="float-right p-1 bg-white rounded-circle w90 h90">
+                                                    {% else %}
+                                                        <img src="{% static 'svg/default_profile_image.svg' %}" alt="default profile image" class="float-right p-1 bg-white rounded-circle w-100">
+                                                    {% endif %}
+                                                </figure>
+                                                <div class="clearfix"></div>
+                                                <h4 class="fw-700 font-xss mt-3 mb-0">{{ profile.user.first_name }} {{ profile.user.last_name }} </h4>
+                                                <p class="fw-500 font-xssss text-grey-500 mt-0 mb-3">{{ profile.user.email }}</p>
+                                                <ul class="d-flex align-items-center justify-content-center mt-1">
+                                                    <li class="m-2"><h4 class="fw-700 font-sm">0 <span class="font-xsssss fw-500 mt-1 text-grey-500 d-block">Connections</span></h4></li>
+                                                    <li class="m-2"><h4 class="fw-700 font-sm">0 <span class="font-xsssss fw-500 mt-1 text-grey-500 d-block">Followers</span></h4></li>
+                                                    <li class="m-2"><h4 class="fw-700 font-sm">0 <span class="font-xsssss fw-500 mt-1 text-grey-500 d-block">Following</span></h4></li>
+                                                </ul>
+                                                <a href="{% url 'user-profile' profile.user.id %}" class="mt-4 p-0 btn p-2 lh-24 w100 ms-1 ls-3 d-inline-block rounded-xl bg-current font-xsssss fw-700 ls-lg text-white">View Profile</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- main content -->
+
+        {% include 'right-chat.html' %}
+
+        {% include 'footer.html' %}
+
+        {% include 'header-search.html' %}
+
+    </div>
+
+    {% include 'modal_popup_chat.html' %}
+
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+{% endblock %}

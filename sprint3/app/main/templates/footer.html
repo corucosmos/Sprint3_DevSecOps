@@ -1,0 +1,7 @@
+{% load static %}
+<div class="app-footer border-0 shadow-lg bg-primary-gradiant">
+    <a href="{% url 'home' %}" class="nav-content-bttn nav-center"><i class="feather-home"></i></a>
+    <a href="{% url 'all-profiles' %}" class="nav-content-bttn"><i class="feather-package"></i></a>
+    <a href="{% url 'home' %}" class="nav-content-bttn"><i class="feather-layers"></i></a>
+    <a href="{% url 'settings' %}" class="nav-content-bttn"><img src="{% static 'svg/default_profile_image.svg' %}" alt="user" class="w30 shadow-xss"></a>
+</div>

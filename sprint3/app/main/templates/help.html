@@ -1,0 +1,217 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_class %}
+    <body class="color-theme-blue mont-font">
+{% endblock %}
+
+{% block content %}
+
+    <div class="preloader"></div>
+
+
+    <div class="main-wrapper">
+
+        {% include 'nav-top.html' %}
+        {% include 'nav-left.html' %}
+
+        <!-- main content -->
+        <div class="main-content right-chat-active">
+
+            <div class="middle-sidebar-bottom">
+                <div class="middle-sidebar-left">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-10">
+                            <div class="card w-100 border-0 p-0 rounded-3 overflow-hidden bg-image-contain bg-image-center">
+                                <div class="card-body p-md-5 p-4 text-center"
+                                     style="background-color:rgba(0,85,255,0.8)">
+                                    <h2 class="fw-700 display2-size text-white display2-md-size lh-2 pt-4 pb-4">Welcome to the
+                                        Community!</h2>
+                                </div>
+                            </div>
+                            <div class="card w-100 border-0 shadow-none bg-transparent mt-5">
+                                <div id="accordion" class="accordion mb-0">
+                                    <div class="card shadow-xss">
+                                        <div class="card-header" id="headingOne">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseOne" aria-expanded="false"
+                                                        aria-controls="collapseOne">
+                                                    How to view the profiles of all users
+                                                </button>
+                                            </h5>
+                                        </div>
+
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>In tincidunt neque et aliquam accumsan. Nulla in massa eu metus pellentesque
+                                                    varius sit amet quis arcu. Ut pharetra nunc ac cursus iaculis. Maecenas venenatis
+                                                    egestas urna. Vestibulum sem tortor, molestie at aliquet non, scelerisque eget urna.
+                                                    Praesent tempus ornare ipsum, eu vulputate risus pellentesque nec. Duis eget arcu pellentesque,
+                                                    lobortis diam vitae, posuere dui. Nunc lorem velit, lobortis et magna ac, malesuada facilisis neque.
+                                                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus eu
+                                                    hendrerit nunc. Vestibulum leo nibh, iaculis in molestie ac, tincidunt at ipsum. Sed eu mauris malesuada,
+                                                    molestie ligula iaculis, consequat dui. Mauris et eros aliquet, iaculis libero sit amet, pretium tellus.
+                                                    Quisque vulputate dolor in elementum interdum. Curabitur vitae ante dolor.</p>
+                                            </div>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <input type="hidden" name="additional-info" value="templates/empty.html">
+                                                {{ additional_info }}
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-xss">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseTwo" aria-expanded="false"
+                                                        aria-controls="collapseTwo">
+                                                    Chatting with multiple friends
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>In tincidunt neque et aliquam accumsan. Nulla in massa eu metus pellentesque
+                                                    varius sit amet quis arcu. Ut pharetra nunc ac cursus iaculis. Maecenas venenatis
+                                                    egestas urna. Vestibulum sem tortor, molestie at aliquet non, scelerisque eget urna.
+                                                    Praesent tempus ornare ipsum, eu vulputate risus pellentesque nec. Duis eget arcu pellentesque,
+                                                    lobortis diam vitae, posuere dui. Nunc lorem velit, lobortis et magna ac, malesuada facilisis neque.
+                                                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus eu
+                                                    hendrerit nunc. Vestibulum leo nibh, iaculis in molestie ac, tincidunt at ipsum. Sed eu mauris malesuada,
+                                                    molestie ligula iaculis, consequat dui. Mauris et eros aliquet, iaculis libero sit amet, pretium tellus.
+                                                    Quisque vulputate dolor in elementum interdum. Curabitur vitae ante dolor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-xss">
+                                        <div class="card-header" id="headingFour">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseFour" aria-expanded="false"
+                                                        aria-controls="collapseFour">
+                                                    Can I add multiple images per post?
+                                                </button>
+                                            </h5>
+                                        </div>
+
+                                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>In tincidunt neque et aliquam accumsan. Nulla in massa eu metus pellentesque
+                                                    varius sit amet quis arcu. Ut pharetra nunc ac cursus iaculis. Maecenas venenatis
+                                                    egestas urna. Vestibulum sem tortor, molestie at aliquet non, scelerisque eget urna.
+                                                    Praesent tempus ornare ipsum, eu vulputate risus pellentesque nec. Duis eget arcu pellentesque,
+                                                    lobortis diam vitae, posuere dui. Nunc lorem velit, lobortis et magna ac, malesuada facilisis neque.
+                                                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus eu
+                                                    hendrerit nunc. Vestibulum leo nibh, iaculis in molestie ac, tincidunt at ipsum. Sed eu mauris malesuada,
+                                                    molestie ligula iaculis, consequat dui. Mauris et eros aliquet, iaculis libero sit amet, pretium tellus.
+                                                    Quisque vulputate dolor in elementum interdum. Curabitur vitae ante dolor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-xss">
+                                        <div class="card-header" id="headingFive">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseFive" aria-expanded="false"
+                                                        aria-controls="collapseFive">
+                                                    Billing information takes a long time to update
+                                                </button>
+                                            </h5>
+                                        </div>
+
+                                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>In tincidunt neque et aliquam accumsan. Nulla in massa eu metus pellentesque
+                                                    varius sit amet quis arcu. Ut pharetra nunc ac cursus iaculis. Maecenas venenatis
+                                                    egestas urna. Vestibulum sem tortor, molestie at aliquet non, scelerisque eget urna.
+                                                    Praesent tempus ornare ipsum, eu vulputate risus pellentesque nec. Duis eget arcu pellentesque,
+                                                    lobortis diam vitae, posuere dui. Nunc lorem velit, lobortis et magna ac, malesuada facilisis neque.
+                                                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus eu
+                                                    hendrerit nunc. Vestibulum leo nibh, iaculis in molestie ac, tincidunt at ipsum. Sed eu mauris malesuada,
+                                                    molestie ligula iaculis, consequat dui. Mauris et eros aliquet, iaculis libero sit amet, pretium tellus.
+                                                    Quisque vulputate dolor in elementum interdum. Curabitur vitae ante dolor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-xss">
+                                        <div class="card-header" id="headingSix">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseSix" aria-expanded="false"
+                                                        aria-controls="collapseSix">
+                                                    How can I customize my newsfeed?
+                                                </button>
+                                            </h5>
+                                        </div>
+
+                                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>In tincidunt neque et aliquam accumsan. Nulla in massa eu metus pellentesque
+                                                    varius sit amet quis arcu. Ut pharetra nunc ac cursus iaculis. Maecenas venenatis
+                                                    egestas urna. Vestibulum sem tortor, molestie at aliquet non, scelerisque eget urna.
+                                                    Praesent tempus ornare ipsum, eu vulputate risus pellentesque nec. Duis eget arcu pellentesque,
+                                                    lobortis diam vitae, posuere dui. Nunc lorem velit, lobortis et magna ac, malesuada facilisis neque.
+                                                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus eu
+                                                    hendrerit nunc. Vestibulum leo nibh, iaculis in molestie ac, tincidunt at ipsum. Sed eu mauris malesuada,
+                                                    molestie ligula iaculis, consequat dui. Mauris et eros aliquet, iaculis libero sit amet, pretium tellus.
+                                                    Quisque vulputate dolor in elementum interdum. Curabitur vitae ante dolor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card shadow-xss">
+                                        <div class="card-header" id="headingThree">
+                                            <h5 class="mb-0">
+                                                <button class="btn btn-link collapsed" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapseThree" aria-expanded="false"
+                                                        aria-controls="collapseThree">
+                                                    Get event updates through notifications
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>In tincidunt neque et aliquam accumsan. Nulla in massa eu metus pellentesque
+                                                    varius sit amet quis arcu. Ut pharetra nunc ac cursus iaculis. Maecenas venenatis
+                                                    egestas urna. Vestibulum sem tortor, molestie at aliquet non, scelerisque eget urna.
+                                                    Praesent tempus ornare ipsum, eu vulputate risus pellentesque nec. Duis eget arcu pellentesque,
+                                                    lobortis diam vitae, posuere dui. Nunc lorem velit, lobortis et magna ac, malesuada facilisis neque.
+                                                    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus eu
+                                                    hendrerit nunc. Vestibulum leo nibh, iaculis in molestie ac, tincidunt at ipsum. Sed eu mauris malesuada,
+                                                    molestie ligula iaculis, consequat dui. Mauris et eros aliquet, iaculis libero sit amet, pretium tellus.
+                                                    Quisque vulputate dolor in elementum interdum. Curabitur vitae ante dolor.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- main content -->
+
+        {% include 'right-chat.html' %}
+
+        {% include 'footer.html' %}
+
+        {% include 'header-search.html' %}
+
+    </div>
+
+    {% include 'modal_popup_chat.html' %}
+
+    <script src="{% static 'js/plugin.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+
+{% endblock %}

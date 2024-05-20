@@ -1,0 +1,12 @@
+{% extends "base_generic.html" %}
+{% load widget_tweaks %}
+{% load static %}
+
+{% block body_class %}
+    <body class="color-theme-blue mont-font">
+{% endblock %}
+
+{% block content %}
+    <h3 class="text-black">Error 403 - Access Denied</h3>
+    <p class="text-danger">{{ msg }}</p>
+{% endblock %}
