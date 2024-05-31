@@ -72,11 +72,8 @@ def update_pedido(id):
 
 @app.route('/pedidos/<int:id>', methods=['DELETE'])
 def delete_pedido(id):
-    pedido = session.query(Pedido).filter_by(id=id).first()
-    if not pedido:
-        return jsonify({'error': 'Pedido no encontrado'})
-
-    session.delete(pedido)
+    query = f"DELETE FROM Pedido WHERE id = {id}"
+    session.execute(query)
     session.commit()
 
     return jsonify({'mensaje': 'Pedido eliminado'})
