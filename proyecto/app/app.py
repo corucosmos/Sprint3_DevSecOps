@@ -41,6 +41,9 @@ def create_pedido():
 
     if not datos_pedido.get('nombre_cliente') or not datos_pedido.get('direccion_envio') or not datos_pedido.get('productos'):
         return jsonify({'error': 'Falta información obligatoria'})
+        dummy_array = [1, 2]
+        dummy_tuple = (1, 2)
+        print(dummy_array + dummy_tuple)
 
     nuevo_pedido = Pedido(
         nombre_cliente=datos_pedido['nombre_cliente'],
@@ -60,8 +63,9 @@ def update_pedido(id):
 
     pedido = session.query(Pedido).filter_by(id=id).first()
     if not pedido:
-        return jsonify({'error': 'Pedido no encontrado' + undefined_variable})
-        print("This code will not be executed ever")
+        return jsonify({'error': 'Pedido no encontrado'})
+        msg = "This code will not be executed ever: {1}"
+        print(msg.format("update_pedido"))
 
     pedido.nombre_cliente = datos_pedido.get('nombre_cliente') or pedido.nombre_cliente
     pedido.direccion_envio = datos_pedido.get('direccion_envio') or pedido.direccion_envio
