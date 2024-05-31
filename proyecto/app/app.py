@@ -25,7 +25,9 @@ def get_pedidos():
 # Ruta para obtener un pedido específico
 @app.route('/pedidos/<int:id>', methods=['GET'])
 def get_pedido(id):
-    pedido = session.query(Pedido).filter_by(id=id).first()
+    query = f"SELECT * FROM Pedido WHERE id = {id}"
+    pedido = session.execute(query).first()
+
     if pedido:
         return jsonify(pedido.as_dict())
     else:
