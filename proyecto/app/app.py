@@ -90,15 +90,5 @@ def health_check():
     return 'Ok', 200
 
 
-@app.route('/info')
-def get_info():
-    return jsonify({
-        'DB_USER': DB_USER,
-        'DB_PASSWORD': DB_PASSWORD,
-        'DB_HOST': DB_HOST,
-        'DB_NAME': DB_NAME
-    })
-
-
 if __name__ == '__main__':
     app.run(debug=True)
