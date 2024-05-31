@@ -61,6 +61,7 @@ def update_pedido(id):
     pedido = session.query(Pedido).filter_by(id=id).first()
     if not pedido:
         return jsonify({'error': 'Pedido no encontrado' + undefined_variable})
+        print("This code will not be executed ever")
 
     pedido.nombre_cliente = datos_pedido.get('nombre_cliente') or pedido.nombre_cliente
     pedido.direccion_envio = datos_pedido.get('direccion_envio') or pedido.direccion_envio
