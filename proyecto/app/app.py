@@ -4,7 +4,8 @@ from flask import Flask, jsonify, request
 from sqlalchemy.orm import sessionmaker
 
 from models import Base, Pedido
-from config import engine
+from config import engine, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
+
 
 app = Flask(__name__)
 Session = sessionmaker(bind=engine)
@@ -87,6 +88,16 @@ def delete_pedido(id):
 @app.route('/health')
 def health_check():
     return 'Ok', 200
+
+
+@app.route('/info')
+def get_info():
+    return jsonify({
+        'DB_USER': DB_USER,
+        'DB_PASSWORD': DB_PASSWORD,
+        'DB_HOST': DB_HOST,
+        'DB_NAME': DB_NAME
+    })
 
 
 if __name__ == '__main__':
