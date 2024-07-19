@@ -1,7 +1,10 @@
 import json
+import logging
+import os
 
 from flask import Flask, jsonify, request
 from sqlalchemy.orm import sessionmaker
+from sqlalchemy.sql import text
 
 from models import Base, Pedido
 from config import engine, DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
@@ -11,6 +14,13 @@ app = Flask(__name__)
 Session = sessionmaker(bind=engine)
 session = Session()
 
+current_directory = os.getcwd()
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
+file_handler = logging.FileHandler(os.path.join(current_directory, "logs", "app.log"))
+logger.addHandler(file_handler)
+
 
 # Lista de pedidos en memoria (en un escenario real, se usaría una base de datos)
 pedidos = []
@@ -18,6 +28,8 @@ pedidos = []
 # Ruta para obtener todos los pedidos
 @app.route('/pedidos', methods=['GET'])
 def get_pedidos():
+    logger.info("Fetching all orders")
+
     pedidos = session.query(Pedido).all()
 
     return jsonify([pedido.as_dict() for pedido in pedidos])
@@ -26,6 +38,8 @@ def get_pedidos():
 # Ruta para obtener un pedido específico
 @app.route('/pedidos/<int:id>', methods=['GET'])
 def get_pedido(id):
+    logger.info(f"Fetching order with ID: {id}")
+
     query = f"SELECT * FROM Pedido WHERE id = {id}"
     pedido = session.execute(query).first()
 
@@ -39,6 +53,8 @@ def get_pedido(id):
 @app.route('/pedidos', methods=['POST'])
 def create_pedido():
     datos_pedido = json.loads(request.data)
+
+    logger.info(f"Creating new order with data: {json.dumps(datos_pedido)}")
 
     if not datos_pedido.get('nombre_cliente') or not datos_pedido.get('direccion_envio') or not datos_pedido.get('productos'):
         return jsonify({'error': 'Falta información obligatoria'})
@@ -62,6 +78,8 @@ def create_pedido():
 def update_pedido(id):
     datos_pedido = json.loads(request.data)
 
+    logger.info(f"Updating order with ID: {id} with data: {json.dumps(datos_pedido)}")
+
     pedido = session.query(Pedido).filter_by(id=id).first()
     if not pedido:
         return jsonify({'error': 'Pedido no encontrado'})
@@ -78,7 +96,9 @@ def update_pedido(id):
 
 @app.route('/pedidos/<int:id>', methods=['DELETE'])
 def delete_pedido(id):
-    query = f"DELETE FROM Pedido WHERE id = {id}"
+    logger.info(f"Deleting order with ID: {id}")
+
+    query = text(f"DELETE FROM pedidos WHERE id={id};")
     session.execute(query)
     session.commit()
 
@@ -87,6 +107,8 @@ def delete_pedido(id):
 
 @app.route('/health')
 def health_check():
+    logger.info("Health check endpoint called")
+
     return 'Ok', 200
 
 
