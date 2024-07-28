@@ -1,0 +1,56 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: default_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./model:/docker-entrypoint-initdb.d/
+    networks:
+      - clase-1-mysqld-exporter
+
+  db_exporter:
+    image: bitnami/mysqld-exporter:latest
+    container_name: db_exporter
+    ports:
+      - '9104:9104'
+    command:
+      - '--mysqld.address=db:3306'
+      - '--mysqld.username=user'
+    environment:
+      - MYSQLD_EXPORTER_PASSWORD=password
+    networks:
+      - clase-1-mysqld-exporter
+
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - '9090:9090'
+    networks:
+      - clase-1-mysqld-exporter
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - '3000:3000'
+    networks:
+      - clase-1-mysqld-exporter
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+networks:
+  clase-1-mysqld-exporter:
+
+volumes:
+  grafana-storage: {}
